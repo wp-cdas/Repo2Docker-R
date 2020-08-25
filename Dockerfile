@@ -272,11 +272,11 @@ RUN conda create --quiet --yes --name r2d --file environment.yml
 #       && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 #Cloning a repository to your HOME directory
-RUN git clone https://github.com/wp-cdas/ExampleRepo $HOME
+RUN git clone https://github.com/wp-cdas/ExampleRepo $HOME/new-folder-name
 
 #Copying a file from the top folder of the repo 
 # (with the Dockerfile, etc) to your HOME directory
-#COPY filename $HOME
+COPY filename $HOME
 
 #####
 
