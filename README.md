@@ -8,7 +8,7 @@ The general idea of Repo2Docker on the DSP is that you can build the environment
 
 This is both simpler and harder than the Python version. Repo2Docker is primarily designed to get you working in JupyterLab but having the RStudio launcher from JupyterLab is a nice feature. Configuring this is simpler because there is only one configuration file (for libraries): environment.yml. It's harder because if you want to do anything else, you have to get into the Dockerfile. I have commented out a few example lines at the end of the Dockerfile if you want to do things like: install additional system packages (using apt), clone repositories, or copy extra files you've included in your Repo2Docker repo.
 
-Dockerfile - This is the main component to the repository. There is going to be a lot in this that may look advanced but it's all well documented by Docker. Check the end of the file for my (commented out) examples of changes you could make.  
-environment.yml - Uses Conda to install an environment that includes the packages you need for your project. Please check the Anaconda repository website to ensure you've named your libraries correctly.   
-/bin - This folder contains various scripts for getting JupyterLab running. Don't worry about these things.  
-/config - This folder contains the configuration file for the JupyterLab server. Don't worry about this either.  
+* Dockerfile - This is the main component to the repository. There is going to be a lot in this that may look advanced but it's all well documented by Docker. Check the end of the file for my (commented out) examples of changes you could make.  
+* environment.yml - Uses Conda to install an environment that includes the packages you need for your project. Please check the Anaconda repository website to ensure you've named your libraries correctly.   
+* /bin - This folder contains various scripts for getting JupyterLab running. Don't worry about these things.  
+* /config - This folder contains the configuration file for the JupyterLab server. Don't worry about this either.  
