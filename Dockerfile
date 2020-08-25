@@ -233,10 +233,19 @@ RUN pip install git+https://github.com/jupyterlab/jupyterlab-git && \
 
 EXPOSE 8888
 
-
 # Configure container startup
 ENTRYPOINT ["tini", "-g", "--"]
 CMD ["start-notebook.sh"]
+
+# Add local files as late as possible to avoid cache busting
+COPY bin/start.sh /usr/local/bin/
+COPY bin/start-notebook.sh /usr/local/bin/
+COPY bin/start-singleuser.sh /usr/local/bin/
+COPY config/jupyter_notebook_config.py /etc/jupyter/
+
+# Fix permissions on /etc/jupyter as root
+USER root
+RUN fix-permissions /etc/jupyter/
 
 # Fix permissions on /etc/jupyter as root
 USER root
@@ -251,16 +260,6 @@ RUN apt-get update && \
 COPY environment.yml .
 
 RUN conda create --quiet --yes --name r2d --file environment.yml
-
-# Add local files as late as possible to avoid cache busting
-COPY bin/start.sh /usr/local/bin/
-COPY bin/start-notebook.sh /usr/local/bin/
-COPY bin/start-singleuser.sh /usr/local/bin/
-COPY config/jupyter_notebook_config.py /etc/jupyter/
-
-# Fix permissions on /etc/jupyter as root
-USER root
-RUN fix-permissions /etc/jupyter/
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER $NB_UID
