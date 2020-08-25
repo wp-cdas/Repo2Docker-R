@@ -1,0 +1,6 @@
+#List the packages you would like to install in this file.
+#You can confirm the exact package name (super important!) by searching
+# for it here: https://anaconda.org/conda-forge
+#Using version numbers for your packages usually 
+# helps your environment build faster.
+r-tidyverse==1.2.1
