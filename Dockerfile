@@ -261,6 +261,25 @@ COPY environment.yml .
 
 RUN conda create --quiet --yes --name r2d --file environment.yml
 
+##### Try to keep you changes in this block
+
+#Adding extra system packages
+#RUN apt-get update && \
+#       apt-get install -y --no-install-recommends \
+#                package-name1 \
+#                package-name2 \
+#                package-name2 && \
+#       && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+#Cloning a repository to your HOME directory
+RUN git clone https://github.com/wp-cdas/ExampleRepo $HOME
+
+#Copying a file from the top folder of the repo 
+# (with the Dockerfile, etc) to your HOME directory
+#COPY filename $HOME
+
+#####
+
 # Switch back to jovyan to avoid accidental container runs as root
 USER $NB_UID
 
